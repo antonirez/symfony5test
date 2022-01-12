@@ -32,6 +32,8 @@ class Persona
         return $this->id;
     }
 
+    /* Definición de getters y setters */
+
     public function getNombre(): ?string
     {
         return $this->nombre;

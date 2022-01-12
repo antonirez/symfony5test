@@ -16,6 +16,7 @@ class Ejercicio2Controller extends AbstractController
      */
     public function index(int $id, ManagerRegistry $doctrine): Response
     {
+        // Función modificar donde se realizan todas las comprobaciones
         $message = $this->modificar($id, $doctrine);
 
         return $this->json([
@@ -32,10 +33,11 @@ class Ejercicio2Controller extends AbstractController
     {
         $entityManager = $doctrine->getManager();
         $persona  = $doctrine->getRepository(Persona::class)->find($id);
-
+        // Comprobamos si el id pasado por url se corresponde a un registro en nuestra BD
         if (!$persona) {
             $message = 'Persona no encontrada';
         } else {
+            // hacemos las modificaciones necesarias setteando datos
             $persona->setNombre('Lucía');
             $entityManager->flush();
             $message = 'Registro editado';
