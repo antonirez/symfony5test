@@ -2,40 +2,30 @@
 
 namespace App\Entity;
 
+use App\Repository\PersonaRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Persona
- *
- * @ORM\Table(name="Persona")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass=PersonaRepository::class)
  */
 class Persona
 {
     /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\GeneratedValue
+     * @ORM\Column(type="integer")
      */
     private $id;
 
     /**
-     * @var string|null
-     *
-     * @ORM\Column(name="nombre", type="string", length=45, nullable=true)
+     * @ORM\Column(type="string", length=100, nullable=true)
      */
     private $nombre;
 
     /**
-     * @var \DateTime|null
-     *
-     * @ORM\Column(name="fecchaNacimiento", type="date", nullable=true)
+     * @ORM\Column(type="date", nullable=true)
      */
-    private $fecchanacimiento;
-
-    /* Definición de getters y setters */
+    private $fechaNacimiento;
 
     public function getId(): ?int
     {
@@ -54,17 +44,15 @@ class Persona
         return $this;
     }
 
-    public function getFecchanacimiento(): ?\DateTimeInterface
+    public function getFechaNacimiento(): ?\DateTimeInterface
     {
-        return $this->fecchanacimiento;
+        return $this->fechaNacimiento;
     }
 
-    public function setFecchanacimiento(?\DateTimeInterface $fecchanacimiento): self
+    public function setFechaNacimiento(?\DateTimeInterface $fechaNacimiento): self
     {
-        $this->fecchanacimiento = $fecchanacimiento;
+        $this->fechaNacimiento = $fechaNacimiento;
 
         return $this;
     }
-
-
 }
