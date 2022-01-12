@@ -38,7 +38,7 @@ class Ejercicio2Controller extends AbstractController
         } else {
             $persona->setNombre('Lucía');
             $entityManager->flush();
-            $message = 'Registro modificado';
+            $message = 'Registro editado';
         }
         return $message;
 
